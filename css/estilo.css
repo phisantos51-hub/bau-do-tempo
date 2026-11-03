@@ -387,3 +387,116 @@ p { margin: 0.3rem 0; }
 /* Desenho de fundo do mapa e da praça (os botões ficam por cima). */
 .figura-fundo { position: absolute; inset: 0; width: 100%; height: 100%; }
 .travada { opacity: 0.92; }
+
+/* =================================================================
+   ACESSIBILIDADE
+   ================================================================= */
+.botao-acess { background: #e0e7ff; border-color: #3730a3; }
+
+/* Painel de acessibilidade */
+.lista-acess { display: grid; grid-template-columns: 1fr; gap: 0.5rem; }
+@media (min-width: 900px) { .janela:has(.lista-acess) { width: min(1100px, 100%); } .lista-acess { grid-template-columns: 1fr 1fr; } }
+.alternar { justify-content: flex-start; text-align: left; width: 100%; min-height: 64px; padding: 0.4rem 0.8rem; font-size: 1.15rem; }
+.alternar .alt-texto { flex: 1; display: flex; flex-direction: column; }
+.alternar .alt-texto .texto-pequeno { font-weight: normal; }
+.alternar .estado { padding: 0.2rem 0.7rem; border-radius: 999px; border: 3px solid var(--borda); background: #f3f4f6; font-size: 1.05rem; }
+.alternar[aria-pressed="true"] { background: #dcfce7; border-color: var(--verde-forte); }
+.alternar[aria-pressed="true"] .estado { background: var(--verde-forte); color: #ffffff; border-color: #14532d; }
+
+/* ---------- Modo Áudio ---------- */
+.fala-visivel {
+  margin: 0.5rem auto 0; width: min(1200px, calc(100% - 24px));
+  padding: 0.6rem 1rem; background: #fef9c3; border: 4px solid #a16207; border-radius: 16px;
+  font-size: 1.35rem; font-weight: bold; color: #422006;
+}
+.menu-audio { display: flex; flex-direction: column; gap: 0.5rem; max-width: 900px; margin: 0.5rem auto; outline: none; }
+.menu-audio .opcao-audio { min-height: 64px; font-size: 1.35rem; }
+.menu-audio .opcao-audio .numero { width: 38px; height: 38px; font-size: 1.2rem; }
+.opcao-audio:focus, .opcao-audio:focus-visible { background: #fde047; outline: 6px solid #111827; outline-offset: 2px; }
+.opcao-audio.certa { background: #bbf7d0; }
+.figura-mini { width: 52px; height: 52px; flex: none; }
+.figura-audio { width: 220px; height: 170px; margin: 0 auto; }
+.figura-audio-larga { width: min(480px, 100%); aspect-ratio: 400 / 260; margin: 0 auto; border: 4px solid var(--borda); border-radius: 16px; overflow: hidden; background: #fff; }
+.area-audio { width: 100%; }
+.modo-audio .abertura .bau-grande { width: 200px; }
+.pista-audio { max-width: 300px; }
+.campo-audio { font-size: 2rem !important; }
+
+/* ---------- Modo Calmo ---------- */
+body.calmo {
+  --fundo: #f6f4ef; --texto: #1f2937; --borda: #57534e;
+  --laranja: #fbf1e6; --laranja-forte: #b08968;
+  --verde: #eef5ee; --verde-forte: #5f8f6b;
+  --azul: #edf2f8; --azul-forte: #6b84a8;
+  --roxo: #f1eef7; --roxo-forte: #8b7fa8;
+  --amarelo: #f7f3e3;
+}
+.calmo .barra { background: #5b6b7a; box-shadow: none; }
+.calmo .barra-titulo { display: none; }
+.calmo .botao, .calmo .cartao, .calmo .opcao, .calmo .caixa, .calmo .objeto, .calmo .carta-brinquedo, .calmo .botao-barra { box-shadow: none; }
+.calmo .botao:active { transform: none; }
+.calmo .botao-principal { background: #4f7a5c; border-color: #2f4f3a; }
+.calmo .botao-perigo { background: #8a4b4b; border-color: #5a2f2f; }
+.calmo h1 { color: #374151; }
+.calmo .brilho { display: none; }
+.calmo .tela .texto-pequeno { display: none; }
+.calmo .retorno { box-shadow: none; }
+.calmo .retorno.bom { background: #eef5ee; border-color: #8fb996; color: #1f2937; }
+.calmo .retorno.dica { background: #eef2f6; border-color: #94a3b8; color: #1f2937; }
+.calmo .opcao.certa { background: #e3efe5; border-color: #5f8f6b; }
+.calmo .opcao.tentada { background: #f3f4f6; }
+.calmo .balanca { animation: none; }
+.calmo .aparece { animation: suave 0.9s ease; }
+@keyframes suave { from { opacity: 0.2; } to { opacity: 1; } }
+.calmo .fundo-janela { background: rgba(71, 85, 105, 0.45); }
+.fundo-janela.tranquila { background: #e8eef3; }
+.progresso-calmo { display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; margin-bottom: 0.5rem; padding: 0.4rem 0.8rem; background: #ffffff; border: 3px solid var(--borda); border-radius: 14px; font-weight: bold; }
+.segmentos, .barra-itens { display: inline-flex; gap: 4px; }
+.segmentos span, .barra-itens span { width: 34px; height: 16px; border-radius: 8px; border: 2px solid var(--borda); background: #ffffff; }
+.barra-itens span { width: 20px; height: 14px; }
+.segmentos span.feito, .barra-itens span.feito { background: #8fb996; }
+.segmentos span.atual { background: #c9d7e8; }
+.passos-calmos { list-style: none; display: flex; gap: 0.6rem; flex-wrap: wrap; padding: 0; margin: 0 0 0.6rem; }
+.passos-calmos li { display: flex; align-items: center; gap: 0.4rem; background: #ffffff; border: 3px solid var(--borda); border-radius: 14px; padding: 0.3rem 0.6rem; font-size: 1.1rem; flex: 1 1 240px; }
+.passos-calmos .figura { width: 44px; height: 44px; flex: none; }
+.passos-calmos .numero { width: 34px; height: 34px; font-size: 1.1rem; background: #e5e7eb; }
+.ferramentas-calmas .cores { grid-template-columns: repeat(3, 1fr); }
+.ferramentas-calmas .tamanhos { grid-template-columns: repeat(2, 1fr); }
+.ferramentas-calmas .desfazer-grande { min-height: 80px; font-size: 1.4rem; }
+
+/* ---------- Sem animações ---------- */
+.sem-animacoes *, .sem-animacoes *::before, .sem-animacoes *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+
+/* ---------- Letras e botões maiores ---------- */
+html.grande { font-size: 125%; }
+.grande .botao, .grande .opcao { min-height: 80px; }
+.grande .botao-barra { min-height: 62px; font-size: 1.25rem; }
+.grande .botao-barra .ic { width: 34px; height: 34px; }
+.grande .botao-professor { font-size: 0.9rem; }
+
+/* ---------- Alto contraste ---------- */
+body.contraste { --fundo: #000000; --texto: #ffffff; --texto-suave: #ffffff; --borda: #ffffff; --foco: #ffff00; background: #000000; color: #ffffff; }
+.contraste .barra { background: #000000; border-bottom: 4px solid #ffffff; }
+.contraste h1, .contraste h2, .contraste h3, .contraste .instrucao { color: #ffffff; }
+.contraste .botao, .contraste .botao-barra, .contraste .opcao, .contraste .cartao, .contraste .caixa, .contraste .objeto,
+.contraste .carta-brinquedo, .contraste .passos li, .contraste .marcar .item, .contraste .achados li, .contraste .quem,
+.contraste .janela, .contraste .bancada, .contraste .secao-bau, .contraste .contador, .contraste .ajuda-lista li,
+.contraste .lugar-passo, .contraste .progresso-calmo, .contraste .passos-calmos li, .contraste .fala-visivel,
+.contraste .tamanho, .contraste .mapa .pino, .contraste .etiqueta, .contraste .alternar .estado, .contraste .botao-professor {
+  background: #000000 !important; color: #ffffff !important; border-color: #ffffff !important; box-shadow: none !important;
+}
+.contraste .botao:hover, .contraste .botao:focus-visible, .contraste .opcao:hover, .contraste .opcao:focus-visible, .contraste .cartao:hover,
+.contraste .cartao:focus-visible, .contraste .caixa:hover, .contraste .objeto:hover, .contraste .botao-barra:hover, .contraste .botao-barra:focus-visible,
+.contraste .mapa .pino:hover, .contraste .opcao-audio:focus, .contraste .alternar[aria-pressed="true"], .contraste .escolhas .botao[aria-pressed="true"] {
+  background: #ffff00 !important; color: #000000 !important; border-color: #ffff00 !important;
+}
+.contraste .opcao.certa, .contraste .lugar-passo.cheio, .contraste .marcar .item.resolvido, .contraste .achados li.ok { border-color: #00ff7f !important; border-width: 6px !important; }
+.contraste .opcao.tentada { border-style: dashed !important; opacity: 0.8; }
+.contraste .retorno { background: #000000; color: #ffffff; border-color: #ffff00; }
+.contraste .retorno.bom { border-color: #00ff7f; }
+.contraste span.figura, .contraste .historia-quadro, .contraste .pista { background: #ffffff; border-radius: 10px; }
+.contraste .figura-mini { background: #ffffff; border-radius: 8px; }
+.contraste .numero { background: #ffff00; color: #000000; border-color: #ffffff; }
+.contraste :focus-visible { outline: 6px solid #ffff00; outline-offset: 3px; }
+.contraste .fundo-janela { background: rgba(0, 0, 0, 0.85); }
+.contraste .campo input, .contraste .conta input { background: #000000; color: #ffffff; border-color: #ffffff; }

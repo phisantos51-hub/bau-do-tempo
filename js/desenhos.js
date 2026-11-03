@@ -373,9 +373,9 @@ const DESENHOS = (function () {
       const rad = a * Math.PI / 180;
       s += `<path d="M${x} ${y} L${x + Math.cos(rad - 0.08) * r} ${y + Math.sin(rad - 0.08) * r} L${x + Math.cos(rad + 0.08) * r} ${y + Math.sin(rad + 0.08) * r} Z" fill="#fde68a" opacity=".8"/>`;
     }
-    return s;
+    return `<g class="brilho">${s}</g>`;
   }
-  function estrelinha(x, y, s, cor) { return `<path transform="translate(${x} ${y}) scale(${s})" d="M0 -10 L3 -3 L10 0 L3 3 L0 10 L-3 3 L-10 0 L-3 -3 Z" fill="${cor || "#fde047"}" stroke="#a16207" stroke-width="1"/>`; }
+  function estrelinha(x, y, s, cor) { return `<path class="brilho" transform="translate(${x} ${y}) scale(${s})" d="M0 -10 L3 -3 L10 0 L3 3 L0 10 L-3 3 L-10 0 L-3 -3 Z" fill="${cor || "#fde047"}" stroke="#a16207" stroke-width="1"/>`; }
 
   def("bau", "0 0 160 120", () => bau(80, 104, 0.95, false));
   def("bauAberto", "0 0 160 140", () => brilho(80, 64, 66) + bau(80, 112, 0.9, true));
@@ -596,6 +596,24 @@ const DESENHOS = (function () {
     });
     return s;
   }
+
+  // Cenas do Modo Calmo (sem brilhos nem giros)
+  def("cenaBauCalmo", "0 0 400 250", () => `<rect width="400" height="250" fill="#6b4a3a"/><rect x="0" y="200" width="400" height="50" fill="#a07850"/>` + bau(200, 214, 1.1, false) + pessoa(330, 228, 1.4, 2, "normal"));
+  def("cenaImaginar", "0 0 400 250", () => `<rect width="400" height="250" fill="#f3ece2"/><rect x="0" y="200" width="400" height="50" fill="#c9b08a"/>` + bau(110, 222, 0.8, true) + pessoa(200, 232, 1.4, 2, "normal") +
+    `<circle cx="222" cy="128" r="5" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/><circle cx="238" cy="110" r="8" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>` +
+    `<ellipse cx="310" cy="70" rx="80" ry="58" fill="#ffffff" stroke="#94a3b8" stroke-width="3"/>` +
+    `<g style="filter:sepia(.6)">${pessoa(290, 116, 0.95, 1, "normal")}<g transform="translate(318 74) scale(.34)">${R.piao.f()}</g></g>`);
+  def("cenaMuseuCalmo", "0 0 400 250", () => `<rect width="400" height="250" fill="#f7f1e3"/><rect x="0" y="200" width="400" height="50" fill="#d9c7a3"/>` +
+    `<rect x="20" y="40" width="110" height="10" fill="#a16207" ${LF}/><rect x="270" y="40" width="110" height="10" fill="#a16207" ${LF}/><rect x="20" y="110" width="110" height="10" fill="#a16207" ${LF}/><rect x="270" y="110" width="110" height="10" fill="#a16207" ${LF}/>` +
+    `<g transform="translate(28 -4) scale(.44)">${R.peteca.f()}</g><g transform="translate(78 -4) scale(.44)">${R.piao.f()}</g><g transform="translate(278 -4) scale(.44)">${R.kendama.f()}</g><g transform="translate(328 -4) scale(.44)">${R.pipa.f()}</g>` +
+    `<g transform="translate(28 66) scale(.44)">${R.bonecaPano.f()}</g><g transform="translate(78 66) scale(.44)">${R.carrinhoLata.f()}</g><g transform="translate(278 66) scale(.44)">${R.oware.f()}</g><g transform="translate(328 66) scale(.44)">${R.tsuru.f()}</g>` +
+    bau(200, 228, 0.85, true) + pessoa(330, 240, 1.3, 5, "normal"));
+  def("iconeAcessibilidade", "0 0 24 24", () => `<circle cx="12" cy="12" r="10" ${I}/><circle cx="12" cy="7" r="1.6" fill="currentColor"/><path d="M7 10 L17 10 M12 10 L12 14 L9 19 M12 14 L15 19" ${I}/>`);
+  def("iconeVoz", "0 0 24 24", () => `<circle cx="9" cy="8" r="4" ${I}/><path d="M2 21 Q2 14 9 14 Q16 14 16 21" ${I}/><path d="M18 6 Q20 8.5 18 11 M20.5 4 Q24 8.5 20.5 13" ${I}/>`);
+  def("iconeCalmo", "0 0 24 24", () => `<path d="M12 21 Q4 15 4 9 Q4 4 8.5 4 Q11 4 12 6.5 Q13 4 15.5 4 Q20 4 20 9 Q20 15 12 21 Z" ${I}/>`);
+  def("iconeLetras", "0 0 24 24", () => `<path d="M2 19 L7 5 L12 19 M4 14 L10 14 M14 19 L17.5 10 L21 19 M15.2 16 L19.8 16" ${I}/>`);
+  def("iconeContraste", "0 0 24 24", () => `<circle cx="12" cy="12" r="9.5" ${I}/><path d="M12 2.5 A9.5 9.5 0 0 1 12 21.5 Z" fill="currentColor"/>`);
+  def("iconeParado", "0 0 24 24", () => `<rect x="4" y="4" width="16" height="16" rx="3" ${I}/><path d="M9 9 L15 15 M15 9 L9 15" ${I}/>`);
 
   // ---------- Função pública ----------
   function desenhar(nome, extra) {

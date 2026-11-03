@@ -135,3 +135,28 @@ Esta lista mostra **cada informação histórica ou cultural** que aparece no jo
 3. Troque só o que está entre aspas "assim". Não apague as aspas nem as vírgulas.
 4. Para tirar a origem de um brinquedo, deixe as aspas vazias: `origem: ""`.
 5. Salve (no GitHub: botão verde "Commit changes"). Em alguns minutos o jogo publicado se atualiza.
+
+---
+
+## Modo Áudio — descrições faladas (arquivo `js/acessibilidade.js`)
+
+As descrições faladas e os textos alternativos das ilustrações ficam no arquivo **`js/acessibilidade.js`** (o `js/conteudo.js` não foi alterado). Elas descrevem **como é** cada brinquedo, de que é feito e como se brinca. Vale conferir principalmente:
+
+| Item | O que a voz diz | Confiança |
+|---|---|---|
+| Boneca Ritxòkò | "Uma boneca de barro cozido, com pinturas de linhas e desenhos." | [conferir] |
+| Boneca Abayomi | "Uma boneca de pano preto, feita só com nós, com vestido colorido. Ela não tem rosto desenhado." | [conferir] |
+| Oware | "Um tabuleiro de madeira com doze buracos, seis de cada lado, e sementes dentro." | [conferir] |
+| Xikunahity | "Um jogo com dois times e uma bola de borracha, tocada só com a cabeça." | [conferir com atenção] |
+| Xondaro | "Uma dança em roda, com música, em que a gente pula e desvia." | [conferir com atenção] |
+| Capoeira / berimbau | "Uma roda com música, em que duas pessoas jogam no meio, gingando." / "Um arco de madeira com um fio de metal e uma cabaça redonda." | [conferir] |
+| Lugares (Antes e Hoje) | As descrições contam o que aparece em cada **ilustração** (desenhos simples, não retratos fiéis dos lugares). | [conferir] |
+
+### Detetive da acessibilidade no Modo Áudio
+
+A praça falada tem 8 itens. Atrapalham: escada de três degraus sem rampa; caminho sem piso tátil; **placa só com letras pintadas, sem braille** (novo, pensado para crianças cegas); balanço alto sem encosto; bebedouro muito alto. Não atrapalham: árvore que faz sombra, banco com espaço ao lado, canteiro de flores fora do caminho.
+
+### Modo Calmo
+
+- História contada de forma literal: "Vamos imaginar que o baú nos leva ao tempo da vovó e a outros lugares. É de brincadeira."
+- Erros sempre começam com "Vamos tentar de novo." e o fim de cada atividade é sempre igual: "Você terminou a atividade. Você ganhou 3 estrelas."
