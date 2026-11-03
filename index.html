@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>O Baú do Tempo</title>
+  <meta name="description" content="Jogo de História para o 1º, 2º e 3º ano: brinquedos, brincadeiras e espaços de brincar de São Paulo.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M10 50 Q10 18 50 18 Q90 18 90 50 Z' fill='%23a0522d'/><rect x='10' y='50' width='80' height='36' fill='%238b4513'/><rect x='44' y='44' width='12' height='16' fill='%23facc15'/></svg>">
+  <!-- Ao mudar o estilo ou os scripts, aumente o número depois de "?v=" nas linhas abaixo,
+       para os navegadores baixarem a versão nova. -->
+  <link rel="stylesheet" href="css/estilo.css?v=1">
+</head>
+<body>
+  <header class="barra" id="barra">
+    <div class="barra-esquerda">
+      <button type="button" class="botao-barra" id="botao-inicio"><span class="ic" data-icone="iconeCasa"></span><span>Início</span></button>
+      <button type="button" class="botao-barra" id="botao-bau"><span class="ic" data-icone="iconeBau"></span><span>Meu baú</span></button>
+    </div>
+    <p class="barra-titulo" id="barra-titulo">O Baú do Tempo</p>
+    <div class="barra-direita">
+      <button type="button" class="botao-barra" id="botao-ajuda"><span class="ic" data-icone="iconeAjuda"></span><span>Como jogar</span></button>
+      <button type="button" class="botao-barra" id="botao-pausa"><span class="ic" data-icone="iconePausa"></span><span>Pausa</span></button>
+      <button type="button" class="botao-barra" id="botao-som" aria-pressed="false"><span class="ic" data-icone="iconeSomOff"></span><span>Som: desligado</span></button>
+    </div>
+  </header>
+
+  <main id="tela" class="tela" tabindex="-1">
+    <noscript><p class="aviso-js">Para jogar, o JavaScript do navegador precisa estar ligado.</p></noscript>
+  </main>
+
+  <!-- Avisos de acerto e de dica (aparecem embaixo da tela). -->
+  <div id="retorno" class="retorno" role="status" aria-live="polite" hidden></div>
+
+  <!-- Janelas (como jogar, pausa, área do professor, fim de atividade). -->
+  <div id="fundo-janela" class="fundo-janela" hidden>
+    <div id="janela" class="janela" role="dialog" aria-modal="true" aria-labelledby="janela-titulo" tabindex="-1"></div>
+  </div>
+
+  <button type="button" class="botao-professor" id="botao-professor"><span class="ic" data-icone="iconeEngrenagem"></span><span>Área do professor</span></button>
+
+  <script src="js/conteudo.js?v=1"></script>
+  <script src="js/desenhos.js?v=1"></script>
+  <script src="js/jogo.js?v=1"></script>
+</body>
+</html>
